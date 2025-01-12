@@ -1,12 +1,12 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:simplyfirescore/core/app/global_exports.dart';
 
-
+import '../app/global_exports.dart';
 
 class SimplesContainer extends StatelessWidget {
   final Widget child;
-  const SimplesContainer({required this.child, super.key, this.isContrast = false});
+  const SimplesContainer(
+      {required this.child, super.key, this.isContrast = false});
   final bool isContrast;
   @override
   Widget build(BuildContext context) {
@@ -85,7 +85,8 @@ class SimplesTextMenu extends StatelessWidget {
 class SimplesClickable extends StatelessWidget {
   final Widget child;
   final VoidCallback onPressed;
-  const SimplesClickable({required this.child, required this.onPressed, super.key});
+  const SimplesClickable(
+      {required this.child, required this.onPressed, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +129,8 @@ class LabelledContainer extends StatelessWidget {
         Align(
           alignment: Alignment.topLeft,
           child: Container(
-              margin: EdgeInsets.only(left: (context.size?.width ?? 0.0) * 0.01),
+              margin:
+                  EdgeInsets.only(left: (context.size?.width ?? 0.0) * 0.01),
               alignment: Alignment.topLeft,
               child: SimplesContainer(child: title)),
         )
@@ -137,41 +139,36 @@ class LabelledContainer extends StatelessWidget {
   }
 }
 
-
 class SimplesStyle {
-  static TextStyle h6Text(BuildContext context)  => TextStyle(
-    fontSize: getResponsiveFontSize(context, 14.0),
+  static TextStyle h6Text(BuildContext context) => TextStyle(
+        fontSize: getResponsiveFontSize(context, 14.0),
         fontWeight: FontWeight.normal,
         color: getFontColor(context),
-  );
-static TextStyle h5Text(BuildContext context) => TextStyle(
+      );
+  static TextStyle h5Text(BuildContext context) => TextStyle(
         fontSize: getResponsiveFontSize(context, 16.0),
         fontWeight: FontWeight.bold,
         color: getFontColor(context),
       );
 
-  
   static TextStyle h4Text(BuildContext context) => TextStyle(
         fontSize: getResponsiveFontSize(context, 18.0),
         fontWeight: FontWeight.bold,
         color: getFontColor(context),
       );
 
-  
   static TextStyle h3Text(BuildContext context) => TextStyle(
         fontSize: getResponsiveFontSize(context, 20.0),
         fontWeight: FontWeight.bold,
         color: getFontColor(context),
       );
 
-  
   static TextStyle h2Text(BuildContext context) => TextStyle(
         fontSize: getResponsiveFontSize(context, 24.0),
         fontWeight: FontWeight.bold,
         color: getFontColor(context),
       );
 
-  
   static TextStyle h1Text(BuildContext context) => TextStyle(
         fontSize: getResponsiveFontSize(context, 32.0),
         fontWeight: FontWeight.bold,
@@ -179,24 +176,23 @@ static TextStyle h5Text(BuildContext context) => TextStyle(
       );
 }
 
-
 /// *
 /// Simple widget Helper functions
-/// 
+///
 bool isDarkMode(BuildContext context) {
   return Theme.of(context).brightness == Brightness.dark;
 }
 
-
 double getResponsiveFontSize(BuildContext context, double baseFontSize) {
-    double screenWidth = MediaQuery.of(context).size.width;
-    if (screenWidth < 600) {
-      return baseFontSize * 0.9; 
-    } else if (screenWidth < 1200) {
-      return baseFontSize;  
-    } else {
-      return baseFontSize * 1.2;
-    }
+  double screenWidth = MediaQuery.of(context).size.width;
+  if (screenWidth < 600) {
+    return baseFontSize * 0.9;
+  } else if (screenWidth < 1200) {
+    return baseFontSize;
+  } else {
+    return baseFontSize * 1.2;
   }
+}
 
-Color getFontColor(BuildContext context) => (isDarkMode(context)) ? ligthThemeFontColor : darkThemeFontColor;
+Color getFontColor(BuildContext context) =>
+    (isDarkMode(context)) ? ligthThemeFontColor : darkThemeFontColor;

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:simplyfirescore/core/app/global_exports.dart';
-import 'package:simplyfirescore/core/app/routes.dart';
+import 'package:get/get.dart';
+import 'package:simplyfirescore/core/app/dependencies.dart';
 
-void main() {
+import 'core/app/global_exports.dart';
+import 'core/app/routes.dart';
+import 'widget_controller.dart';
+
+Future<void> main() async {
+  await setUpDependencies();
   runApp(const SimplesApp());
 }
 
@@ -11,7 +16,7 @@ class SimplesApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: appTitle,
+      title: Strings.appTitle,
       darkTheme: simplesDarkTheme,
       theme: simplesLightTheme,
       themeMode: ThemeMode.system,
@@ -20,12 +25,24 @@ class SimplesApp extends StatelessWidget {
   }
 }
 
-
 class SimplesSplashScreen extends StatelessWidget {
   const SimplesSplashScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    final controller = WidgetController();
+    return Scaffold(
+        body: Center(
+            child: Column(
+      children: [
+        Text(Strings.appTitle),
+        ElevatedButton(
+            child: Text("Test"),
+            onPressed: () async {
+              await controller.test();
+            }),
+        Obx(() => Text(controller.resultText.value))
+      ],
+    )));
   }
 }
