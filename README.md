@@ -1,16 +1,66 @@
 # simplyfirescore
 
-A new Flutter project.
+Base Assets and Sample Architecure implementation for all Simples Projects
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+The exported assets of the project will ONLY
 
-A few resources to get you started if this is your first Flutter project:
+[Base]
+  abstract repository
+  abstract entity
+  abstract model
+  simples_widgets - baseWidgets
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+  repositoryImpl
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+  values - themes, styles
+
+[Helpers]
+    i18n
+    validation
+    logger
+    simplesCall
+
+[Services]
+  firebase
+    *firestore
+    *firestorage
+    *authentication
+    fcm
+    *functions
+  *api_service
+  websocket
+  localStorage
+  localdbHive
+  securestorageservice
+  sqliteService
+  android_platform_service
+  tts-text-to-speech
+  speech-to-text
+  voipcalls
+  carriercalls
+  sms-service
+  webrtcConference
+  transliterate_service
+  auto_complete
+  
+
+All these will be implementables / extendables / referrables.
+
+[config, routes, main, materialApp] in this project will be 
+just a reference to refer their structure to implement in other projects.
+
+Each project can have a MaterialApp with routing for internal testing
+The implementor project will manage the routing with MaterialApp
+
+
+
+current:
+
+```mermaid
+flowchart TD
+    A[API] --> B[LocalStorage]
+    B --> C[i18nCodeGen]
+    C --> D[i18n]
+```
