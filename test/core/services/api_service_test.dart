@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_test/flutter_test.dart';
 import 'package:mockito/mockito.dart';
 import 'package:simplyfirescore/widget_controller.dart';
-import 'package:test/test.dart';
 import 'package:simplyfirescore/core/services/api_service.dart';
 
 import '../../mocks/mock_dio.mocks.dart';
