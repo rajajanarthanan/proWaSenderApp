@@ -24,25 +24,3 @@ class SimplesApp extends StatelessWidget {
     );
   }
 }
-
-class SimplesSplashScreen extends StatelessWidget {
-  const SimplesSplashScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final controller = WidgetController();
-    return Scaffold(
-        body: Center(
-            child: Column(
-      children: [
-        Text(Strings.appTitle),
-        ElevatedButton(
-            child: Text("Test"),
-            onPressed: () async {
-              await controller.test();
-            }),
-        Obx(() => Text(controller.resultText.value))
-      ],
-    )));
-  }
-}
