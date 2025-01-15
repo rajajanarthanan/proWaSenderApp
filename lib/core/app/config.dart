@@ -5,6 +5,7 @@ class Config {
       'https://us-central1-profinixtechnologies-pr75.cloudfunctions.net/generatei18njsons';
   static bool get firebaseEmulator => true;
 
+  static const simplesApiBaseUrl = '';
   static const FirebaseOptions firebaseOptions = FirebaseOptions(
       apiKey: "AIzaSyD1EwVadFO3wsvHTA5Hoil3BR5kAnIhURw",
       authDomain: "profinixtechnologies-pr75.firebaseapp.com",
