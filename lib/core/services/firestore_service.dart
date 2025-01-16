@@ -16,7 +16,9 @@ class FirestoreService {
     });
   }
 
-  Future<Either<SimplesError, Map<String, dynamic>>> getDoc(String path) async {
+  Future<Either<SimplesError, Map<String, dynamic>>> getDoc(
+    String path,
+  ) async {
     return simplesCall(() async {
       final doc = await firestore.doc(path).get();
       return doc.data()!;
