@@ -1,5 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:simplyfirescore/simplyfirescore.dart';
 
 abstract class SimplesResult<T> {}
@@ -27,4 +28,7 @@ abstract class SimplesRepository {
   //     Map<String, dynamic> headers = const {
   //       'Content-Type': 'application/json'
   //     }});
+
+  Future<Either<SimplesError, UserCredential>> firebaseLoginWithEmailPassword(
+      String email, String password);
 }
