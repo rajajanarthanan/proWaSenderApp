@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:simplyfirescore/widget_controller.dart';
 
 import '../app/global_exports.dart';
@@ -15,8 +16,12 @@ class SimplesSplashScreen extends StatelessWidget {
       children: [
         Text(Strings.appTitle),
         ElevatedButton(child: Text("Test"), onPressed: () async {}),
-        //TODO: build the splash with svg
-        Text("Simples Splash Screen")
+        Text("Simples Splash Screen"),
+        SizedBox(
+            height: 50,
+            width: 50,
+            child: SimplesSvg(
+                loadFrom: LoadFrom.asset, load: '/profinixicon.svg')),
       ],
     )));
   }
