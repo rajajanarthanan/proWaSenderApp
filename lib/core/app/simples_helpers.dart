@@ -34,10 +34,10 @@ logger() {}
 
 class SimplesError {
   String message;
-  StackTrace stackTrace;
+  StackTrace? stackTrace;
   String? code;
   SimplesErrorType? type;
-  SimplesError(this.message, this.stackTrace, {this.code, this.type});
+  SimplesError(this.message, {this.stackTrace, this.code, this.type});
 
   @override
   String toString() {

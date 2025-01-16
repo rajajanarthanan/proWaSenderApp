@@ -1,8 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:simplyfirescore/core/domain/simples_entity.dart';
 
 class AuthService {
   late final FirebaseAuth firebaseAuth;
   AuthService(this.firebaseAuth);
+
+  SimplesEntity? _appUser;
+
+  void setAppUser(SimplesEntity? user) => _appUser = user;
+  SimplesEntity? get getAppUser => _appUser;
 
   Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
 
