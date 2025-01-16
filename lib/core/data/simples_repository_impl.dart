@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:simplyfirescore/core/domain/simples_repository.dart';
 import 'package:simplyfirescore/core/services/auth_service.dart';
+import 'package:simplyfirescore/core/services/firestore_service.dart';
 
 import '../app/global_exports.dart';
 
@@ -28,6 +29,17 @@ class SimplesRepoSitoryImpl implements SimplesRepository {
     return simplesCall(() async {
       final authService = GetIt.I.get<AuthService>();
       return await authService.signIn(email, password);
+    });
+  }
+
+  @override
+  Future<Either<SimplesError, SimplesResult<T>>> getFireStoreDoc<T>(
+      String path, T Function(Map<String, dynamic> json) fromJson) async {
+    final fireStore = GetIt.I.get<FirestoreService>();
+    final result = await fireStore.getDoc(path);
+
+    return result.fold((l) => Left(l), (r) {
+      return Right(SimplesTypeResult(fromJson(r)));
     });
   }
 }

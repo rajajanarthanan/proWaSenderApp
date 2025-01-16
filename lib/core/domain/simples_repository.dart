@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:get_it/get_it.dart';
+import 'package:simplyfirescore/core/services/firestore_service.dart';
 import 'package:simplyfirescore/simplyfirescore.dart';
 
 abstract class SimplesResult<T> {}
@@ -31,4 +33,7 @@ abstract class SimplesRepository {
 
   Future<Either<SimplesError, UserCredential>> firebaseLoginWithEmailPassword(
       String email, String password);
+
+  Future<Either<SimplesError, SimplesResult<T>>> getFireStoreDoc<T>(
+      String path, T Function(Map<String, dynamic> json) fromJson);
 }
