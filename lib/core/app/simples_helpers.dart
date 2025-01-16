@@ -12,7 +12,7 @@ Future<Either<SimplesError, T>> simplesCall<T>(Future<T> Function() toDo,
     final result = await toDo();
     return Right(result);
   } catch (e, stackTrace) {
-    final error = SimplesError(e.toString(), stackTrace);
+    final error = SimplesError(e.toString(), stackTrace: stackTrace);
     if (errorType != null) error.type = errorType;
     if (errorCode != null) error.code = errorCode;
     if (handleError) {
