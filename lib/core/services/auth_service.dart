@@ -10,8 +10,8 @@ class AuthService {
     await firebaseAuth.signOut();
   }
 
-  Future<void> signIn(String email, String password) async {
-    await firebaseAuth.signInWithEmailAndPassword(
+  Future<UserCredential> signIn(String email, String password) async {
+    return await firebaseAuth.signInWithEmailAndPassword(
         email: email, password: password);
   }
 

@@ -1,6 +1,8 @@
 import 'package:dartz/dartz.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart';
 import 'package:simplyfirescore/core/domain/simples_repository.dart';
+import 'package:simplyfirescore/core/services/auth_service.dart';
 
 import '../app/global_exports.dart';
 
@@ -19,4 +21,13 @@ class SimplesRepoSitoryImpl implements SimplesRepository {
   //     headers: headers,
   //   );
   // }
+
+  @override
+  Future<Either<SimplesError, UserCredential>> firebaseLoginWithEmailPassword(
+      String email, String password) {
+    return simplesCall(() async {
+      final authService = GetIt.I.get<AuthService>();
+      return await authService.signIn(email, password);
+    });
+  }
 }
